@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class noviMiddleware
+class NoviMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class noviMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if($request->route('ba')=='logout'){
+        if($request->route('ba') !== 'bane'){
             return redirect()->route('home');
         }
         return $next($request);

@@ -11,8 +11,6 @@
 |
 */
 
-
-
 Route::get('/',['as'=>'home', function () {
     return view('welcome');
 }]);
@@ -23,40 +21,10 @@ Route::get('/cont/{b}', 'noviKontroler@conMetodaPar' );
 Route::get('/home/{ba}', [function ($ba) {
     return $ba;},'middleware'=>'mymiddleware']);
 
-
-
-/*
-Route::middleware('mymiddleware')->group(function () {
-    Route::get('/home/{ba}', function ($ba) {
-        return $ba;
-    });
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', function () {
-    return view('noviFajl');
-});
-
-Route::middleware('auth:api')->get('/homeee', function () {
-return 'ovo je home stranica';
-
-Route::get('/home', function () {
-return 'ovo je home stranica';
-});
-
-
-
-Route::get('/home', function () {
-    return view('noviFajl');
-});
-
-*/
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/logout', 'HomeController@index')->name('home');
+Route::get('/logout', 'HomeController@index')->name('logout');
 
 
 
