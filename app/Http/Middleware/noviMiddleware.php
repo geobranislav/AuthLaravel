@@ -15,7 +15,7 @@ class noviMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if($request->route('ba')!='bane'){
+        if($request->route('ba')=='logout'){
             return redirect()->route('home');
         }
         return $next($request);
