@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Country;
 
 class RegisterController extends Controller
 {
@@ -74,6 +75,15 @@ class RegisterController extends Controller
             'company' => $data['company'],
             'country' => $data['country'],
 
+        ]);
+    }
+
+    protected function showRegistrationForm()
+    {
+        $countries = Country::all();
+
+        return view('auth.register', [
+            'countries' => $countries->toArray()
         ]);
     }
 }
