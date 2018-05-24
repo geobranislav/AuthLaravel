@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Country;
 
 class RegisterController extends Controller
 {
@@ -54,8 +55,8 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'company' => 'required|string|max:255',
-            'country' => 'required|string|max:255',
-        ]);
+            'country_id' => 'required|integer|max:255',
+         ]);
     }
 
     /**
@@ -72,8 +73,17 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'company' => $data['company'],
-            'country' => $data['country'],
+            'country_id' => $data['country_id'],
 
+        ]);
+    }
+
+    protected function showRegistrationForm()
+    {
+        $countries = Country::all();
+
+        return view('auth.register', [
+            'countries' => $countries->toArray()
         ]);
     }
 }
