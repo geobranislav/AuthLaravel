@@ -9,6 +9,6 @@ class Country extends Model
     protected $tables='countries';
 
     protected $fillable = [
-        'capital','name',
+        'id','capital','name',
     ];
 }
